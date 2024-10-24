@@ -1,0 +1,292 @@
+{
+  "FileHeaderRecord": {
+    "TypeCode": 1,
+    "Description": "Identifies the file's sender, receiver, and creation details.",
+    "Fields": {
+      "RecordTypeCode": {
+        "StartPosition": 1,
+        "EndPosition": 1,
+        "Description": "Always 1"
+      },
+      "PriorityCode": {
+        "StartPosition": 2,
+        "EndPosition": 3,
+        "Description": "Priority code (01)"
+      },
+      "ImmediateDestination": {
+        "StartPosition": 4,
+        "EndPosition": 13,
+        "Description": "Routing number of destination"
+      },
+      "ImmediateOrigin": {
+        "StartPosition": 14,
+        "EndPosition": 23,
+        "Description": "Routing number of origin"
+      },
+      "FileCreationDate": {
+        "StartPosition": 24,
+        "EndPosition": 29,
+        "Description": "Creation date (YYMMDD)"
+      },
+      "FileCreationTime": {
+        "StartPosition": 30,
+        "EndPosition": 33,
+        "Description": "Creation time (HHMM)"
+      },
+      "FileIDModifier": {
+        "StartPosition": 34,
+        "EndPosition": 34,
+        "Description": "Unique file identifier"
+      },
+      "RecordSize": {
+        "StartPosition": 35,
+        "EndPosition": 37,
+        "Description": "Always 094"
+      },
+      "BlockingFactor": {
+        "StartPosition": 38,
+        "EndPosition": 39,
+        "Description": "Always 10"
+      },
+      "FormatCode": {
+        "StartPosition": 40,
+        "EndPosition": 40,
+        "Description": "Always 1"
+      },
+      "ImmediateDestinationName": {
+        "StartPosition": 41,
+        "EndPosition": 63,
+        "Description": "Name of immediate destination"
+      },
+      "ImmediateOriginName": {
+        "StartPosition": 64,
+        "EndPosition": 86,
+        "Description": "Name of immediate origin"
+      },
+      "ReferenceCode": {
+        "StartPosition": 87,
+        "EndPosition": 94,
+        "Description": "Reference code"
+      }
+    }
+  },
+  "BatchHeaderRecord": {
+    "TypeCode": 5,
+    "Description": "Defines details of a specific batch, including company and service class.",
+    "Fields": {
+      "RecordTypeCode": {
+        "StartPosition": 1,
+        "EndPosition": 1,
+        "Description": "Always 5"
+      },
+      "ServiceClassCode": {
+        "StartPosition": 2,
+        "EndPosition": 4,
+        "Description": "Service class code"
+      },
+      "CompanyName": {
+        "StartPosition": 5,
+        "EndPosition": 20,
+        "Description": "Company name"
+      },
+      "CompanyDiscretionaryData": {
+        "StartPosition": 21,
+        "EndPosition": 40,
+        "Description": "Discretionary data"
+      },
+      "CompanyIdentification": {
+        "StartPosition": 41,
+        "EndPosition": 50,
+        "Description": "Company ID"
+      },
+      "StandardEntryClassCode": {
+        "StartPosition": 51,
+        "EndPosition": 53,
+        "Description": "SEC Code (e.g., PPD, CCD)"
+      },
+      "CompanyEntryDescription": {
+        "StartPosition": 54,
+        "EndPosition": 63,
+        "Description": "Entry description"
+      },
+      "CompanyDescriptiveDate": {
+        "StartPosition": 64,
+        "EndPosition": 69,
+        "Description": "Descriptive date"
+      },
+      "EffectiveEntryDate": {
+        "StartPosition": 70,
+        "EndPosition": 75,
+        "Description": "Effective date"
+      },
+      "OriginatorStatusCode": {
+        "StartPosition": 76,
+        "EndPosition": 76,
+        "Description": "Always 1"
+      },
+      "OriginatingDFIIdentification": {
+        "StartPosition": 77,
+        "EndPosition": 84,
+        "Description": "Originating DFI ID"
+      },
+      "BatchNumber": {
+        "StartPosition": 85,
+        "EndPosition": 94,
+        "Description": "Batch number"
+      }
+    }
+  },
+  "EntryDetailRecord": {
+    "TypeCode": 6,
+    "Description": "Contains individual entry details like account number, amount, and transaction code.",
+    "Fields": {
+      "RecordTypeCode": {
+        "StartPosition": 1,
+        "EndPosition": 1,
+        "Description": "Always 6"
+      },
+      "TransactionCode": {
+        "StartPosition": 2,
+        "EndPosition": 3,
+        "Description": "Transaction type code"
+      },
+      "ReceivingDFIIdentification": {
+        "StartPosition": 4,
+        "EndPosition": 11,
+        "Description": "Receiving bank routing number"
+      },
+      "CheckDigit": {
+        "StartPosition": 12,
+        "EndPosition": 12,
+        "Description": "Check digit"
+      },
+      "DFIAccountNumber": {
+        "StartPosition": 13,
+        "EndPosition": 29,
+        "Description": "Receiver's bank account number"
+      },
+      "Amount": {
+        "StartPosition": 30,
+        "EndPosition": 39,
+        "Description": "Transaction amount"
+      },
+      "IndividualIdentificationNumber": {
+        "StartPosition": 40,
+        "EndPosition": 54,
+        "Description": "Identification number"
+      },
+      "IndividualName": {
+        "StartPosition": 55,
+        "EndPosition": 76,
+        "Description": "Receiver's name"
+      },
+      "DiscretionaryData": {
+        "StartPosition": 77,
+        "EndPosition": 78,
+        "Description": "Optional data"
+      },
+      "AddendaRecordIndicator": {
+        "StartPosition": 79,
+        "EndPosition": 79,
+        "Description": "Indicates if addenda exists (0 or 1)"
+      },
+      "TraceNumber": {
+        "StartPosition": 80,
+        "EndPosition": 94,
+        "Description": "Trace number"
+      }
+    }
+  },
+  "BatchControlRecord": {
+    "TypeCode": 8,
+    "Description": "Summarizes the batch, providing totals for debits, credits, and counts.",
+    "Fields": {
+      "RecordTypeCode": {
+        "StartPosition": 1,
+        "EndPosition": 1,
+        "Description": "Always 8"
+      },
+      "ServiceClassCode": {
+        "StartPosition": 2,
+        "EndPosition": 4,
+        "Description": "Same as batch header"
+      },
+      "EntryAddendaCount": {
+        "StartPosition": 5,
+        "EndPosition": 10,
+        "Description": "Number of entries"
+      },
+      "EntryHash": {
+        "StartPosition": 11,
+        "EndPosition": 20,
+        "Description": "Hash of routing numbers"
+      },
+      "TotalDebitEntryDollarAmount": {
+        "StartPosition": 21,
+        "EndPosition": 32,
+        "Description": "Total debits"
+      },
+      "TotalCreditEntryDollarAmount": {
+        "StartPosition": 33,
+        "EndPosition": 44,
+        "Description": "Total credits"
+      },
+      "CompanyIdentification": {
+        "StartPosition": 45,
+        "EndPosition": 54,
+        "Description": "Same as batch header"
+      },
+      "OriginatingDFIIdentification": {
+        "StartPosition": 55,
+        "EndPosition": 62,
+        "Description": "Originating DFI ID"
+      },
+      "BatchNumber": {
+        "StartPosition": 63,
+        "EndPosition": 73,
+        "Description": "Batch number"
+      }
+    }
+  },
+  "FileControlRecord": {
+    "TypeCode": "9",
+    "Description": "Summarizes the entire file, including batch count, entry count, and dollar totals.",
+    "Fields": {
+      "RecordTypeCode": {
+        "StartPosition": 1,
+        "EndPosition": 1,
+        "Description": "Always 9"
+      },
+      "BatchCount": {
+        "StartPosition": 2,
+        "EndPosition": 7,
+        "Description": "Number of batches"
+      },
+      "BlockCount": {
+        "StartPosition": 8,
+        "EndPosition": 12,
+        "Description": "Number of blocks"
+      },
+      "EntryAddendaCount": {
+        "StartPosition": 13,
+        "EndPosition": 18,
+        "Description": "Total number of entries"
+      },
+      "EntryHash": {
+        "StartPosition": 19,
+        "EndPosition": 28,
+        "Description": "Hash of routing numbers"
+      },
+      "TotalDebitEntryDollarAmount": {
+        "StartPosition": 29,
+        "EndPosition": 40,
+        "Description": "Total debits"
+      },
+      "TotalCreditEntryDollarAmount": {
+        "StartPosition": 41,
+        "EndPosition": 52,
+        "Description": "Total credits"
+      }
+    }
+  }
+}

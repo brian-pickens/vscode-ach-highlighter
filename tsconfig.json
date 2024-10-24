@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"typeRoots": ["src/utils/definitions", "node_modules/@types"],
+		"target": "ES2020",
+		"module": "CommonJS",
+		"moduleResolution": "Node",
+		"outDir": "./build",
+		"inlineSourceMap": true,
+		"experimentalDecorators": true,
+		"resolveJsonModule": true,
+		"incremental": true,
+		"tsBuildInfoFile": "./build/.cache/buildInfo.json",
+		"lib": ["ES2020", "es6", "dom", "dom.iterable"],
+		"assumeChangesOnlyAffectDirectDependencies": true,
+		"esModuleInterop": true,
+		"baseUrl": ".",
+		"paths": {
+		  "*": ["./src/*"]
+		}
+	  },
+	  "include": ["src/**/*.ts"],
+	  "exclude": ["node_modules", "build"]
+}
