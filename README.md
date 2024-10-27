@@ -6,6 +6,6 @@ Is an extension that highlights the fields of an Ach File, giving its name and a
 
 ## Release Notes
 
-### 0.0.1
+### [0.0.1](https://github.com/brian-pickens/vscode-ach-highlighter/releases/tag/0.0.1)
 
 Alpha release
