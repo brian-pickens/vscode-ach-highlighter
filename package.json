@@ -1,7 +1,12 @@
 {
   "name": "ach-highlighter",
-  "displayName": "ach-highlighter",
-  "description": "Highlights nacha ach files",
+  "displayName": "Ach Highlighter",
+  "description": "A vscode extension that highlights and gives information about nacha ach fields",
+  "repository": "https://github.com/brian-pickens/vscode-ach-highlighter",
+  "license": "MIT",
+  "author": {
+    "name": "Brian Pickens"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.94.0"
