@@ -1,291 +1,409 @@
 {
   "FileHeaderRecord": {
+    "Name": "File Header Record",
     "TypeCode": 1,
-    "Description": "Identifies the file's sender, receiver, and creation details.",
+    "Description": "Identifies the sender, receiver, and essential creation details of the ACH file.",
     "Fields": {
       "RecordTypeCode": {
+        "Name": "Record Type Code",
         "StartPosition": 1,
         "EndPosition": 1,
-        "Description": "Always 1"
+        "Description": "Fixed code '1' indicating a File Header Record in the ACH file."
       },
       "PriorityCode": {
+        "Name": "Priority Code",
         "StartPosition": 2,
         "EndPosition": 3,
-        "Description": "Priority code (01)"
+        "Description": "Two-digit code for processing priority; '01' is commonly used."
       },
       "ImmediateDestination": {
+        "Name": "Immediate Destination",
         "StartPosition": 4,
         "EndPosition": 13,
-        "Description": "Routing number of destination"
+        "Description": "Routing number of the receiving financial institution for the file."
       },
       "ImmediateOrigin": {
+        "Name": "Immediate Origin",
         "StartPosition": 14,
         "EndPosition": 23,
-        "Description": "Routing number of origin"
+        "Description": "Routing number of the file's originating financial institution."
       },
       "FileCreationDate": {
+        "Name": "File Creation Date",
         "StartPosition": 24,
         "EndPosition": 29,
-        "Description": "Creation date (YYMMDD)"
+        "Description": "Date when the file was created, in 'YYMMDD' format."
       },
       "FileCreationTime": {
+        "Name": "File Creation Time",
         "StartPosition": 30,
         "EndPosition": 33,
-        "Description": "Creation time (HHMM)"
+        "Description": "Time when the file was created, in 'HHMM' 24-hour format."
       },
       "FileIDModifier": {
+        "Name": "File ID Modifier",
         "StartPosition": 34,
         "EndPosition": 34,
-        "Description": "Unique file identifier"
+        "Description": "Unique character to distinguish multiple files created on the same date."
       },
       "RecordSize": {
+        "Name": "Record Size",
         "StartPosition": 35,
         "EndPosition": 37,
-        "Description": "Always 094"
+        "Description": "Size of each record in the file; always '094'."
       },
       "BlockingFactor": {
+        "Name": "Blocking Factor",
         "StartPosition": 38,
         "EndPosition": 39,
-        "Description": "Always 10"
+        "Description": "Indicates the number of records per block; typically '10'."
       },
       "FormatCode": {
+        "Name": "Format Code",
         "StartPosition": 40,
         "EndPosition": 40,
-        "Description": "Always 1"
+        "Description": "Specifies the file format; always set to '1' for ACH files."
       },
       "ImmediateDestinationName": {
+        "Name": "Immediate Destination Name",
         "StartPosition": 41,
         "EndPosition": 63,
-        "Description": "Name of immediate destination"
+        "Description": "Name of the destination financial institution."
       },
       "ImmediateOriginName": {
+        "Name": "Immediate Origin Name",
         "StartPosition": 64,
         "EndPosition": 86,
-        "Description": "Name of immediate origin"
+        "Description": "Name of the originating financial institution."
       },
       "ReferenceCode": {
+        "Name": "Reference Code",
         "StartPosition": 87,
         "EndPosition": 94,
-        "Description": "Reference code"
+        "Description": "Optional field for a reference code, not required for processing."
       }
     }
   },
   "BatchHeaderRecord": {
+    "Name": "Batch Header Record",
     "TypeCode": 5,
-    "Description": "Defines details of a specific batch, including company and service class.",
+    "Description": "Defines batch details, including originating company and service class.",
     "Fields": {
       "RecordTypeCode": {
+        "Name": "Record Type Code",
         "StartPosition": 1,
         "EndPosition": 1,
-        "Description": "Always 5"
+        "Description": "Fixed code '5' indicating a Batch Header Record."
       },
       "ServiceClassCode": {
+        "Name": "Service Class Code",
         "StartPosition": 2,
         "EndPosition": 4,
-        "Description": "Service class code"
+        "Description": "Defines the transaction type in the batch (e.g., '200' for credits only)."
       },
       "CompanyName": {
+        "Name": "Company Name",
         "StartPosition": 5,
         "EndPosition": 20,
-        "Description": "Company name"
+        "Description": "The name of the originating company for identification."
       },
       "CompanyDiscretionaryData": {
+        "Name": "Company Discretionary Data",
         "StartPosition": 21,
         "EndPosition": 40,
-        "Description": "Discretionary data"
+        "Description": "Optional field for additional data specific to the company."
       },
       "CompanyIdentification": {
+        "Name": "Company Identification",
         "StartPosition": 41,
         "EndPosition": 50,
-        "Description": "Company ID"
+        "Description": "A unique identifier for the company, often the Federal Tax ID."
       },
       "StandardEntryClassCode": {
+        "Name": "Standard Entry Class Code",
         "StartPosition": 51,
         "EndPosition": 53,
-        "Description": "SEC Code (e.g., PPD, CCD)"
+        "Description": "Code specifying the type of transaction, such as 'PPD' for payroll."
       },
       "CompanyEntryDescription": {
+        "Name": "Company Entry Description",
         "StartPosition": 54,
         "EndPosition": 63,
-        "Description": "Entry description"
+        "Description": "Description of the batch contents (e.g., 'PAYROLL')."
       },
       "CompanyDescriptiveDate": {
+        "Name": "Company Descriptive Date",
         "StartPosition": 64,
         "EndPosition": 69,
-        "Description": "Descriptive date"
+        "Description": "Optional date for reference purposes, not processed by ACH."
       },
       "EffectiveEntryDate": {
+        "Name": "Effective Entry Date",
         "StartPosition": 70,
         "EndPosition": 75,
-        "Description": "Effective date"
+        "Description": "The date when transactions are intended to be posted."
+      },
+      "SettlementDate": {
+        "Name": "Settlement Date",
+        "StartPosition": 76,
+        "EndPosition": 78,
+        "Description": "Date of settlement, determined by the ACH operator."
       },
       "OriginatorStatusCode": {
-        "StartPosition": 76,
-        "EndPosition": 76,
-        "Description": "Always 1"
+        "Name": "Originator Status Code",
+        "StartPosition": 79,
+        "EndPosition": 79,
+        "Description": "Status of the originator, typically '1' for financial institutions."
       },
       "OriginatingDFIIdentification": {
-        "StartPosition": 77,
-        "EndPosition": 84,
-        "Description": "Originating DFI ID"
+        "Name": "Originating DFI Identification",
+        "StartPosition": 80,
+        "EndPosition": 87,
+        "Description": "Routing number of the originating financial institution."
       },
       "BatchNumber": {
-        "StartPosition": 85,
+        "Name": "Batch Number",
+        "StartPosition": 88,
         "EndPosition": 94,
-        "Description": "Batch number"
+        "Description": "Unique batch number within the ACH file."
       }
     }
   },
   "EntryDetailRecord": {
+    "Name": "Entry Detail Record",
     "TypeCode": 6,
-    "Description": "Contains individual entry details like account number, amount, and transaction code.",
+    "Description": "Contains specific transaction details, such as account number, transaction code, and amount.",
     "Fields": {
       "RecordTypeCode": {
+        "Name": "Record Type Code",
         "StartPosition": 1,
         "EndPosition": 1,
-        "Description": "Always 6"
+        "Description": "Fixed code '6' indicating an Entry Detail Record."
       },
       "TransactionCode": {
+        "Name": "Transaction Code",
         "StartPosition": 2,
         "EndPosition": 3,
-        "Description": "Transaction type code"
+        "Description": "Code specifying the type of transaction (credit or debit)."
       },
       "ReceivingDFIIdentification": {
+        "Name": "Receiving DFI Identification",
         "StartPosition": 4,
         "EndPosition": 11,
-        "Description": "Receiving bank routing number"
+        "Description": "Routing number of the receiving bank."
       },
       "CheckDigit": {
+        "Name": "Check Digit",
         "StartPosition": 12,
         "EndPosition": 12,
-        "Description": "Check digit"
+        "Description": "Single-digit checksum for verifying the routing number."
       },
       "DFIAccountNumber": {
+        "Name": "DFI Account Number",
         "StartPosition": 13,
         "EndPosition": 29,
-        "Description": "Receiver's bank account number"
+        "Description": "Account number at the receiving bank."
       },
       "Amount": {
+        "Name": "Amount",
         "StartPosition": 30,
         "EndPosition": 39,
-        "Description": "Transaction amount"
+        "Description": "Transaction amount in cents, without a decimal."
       },
       "IndividualIdentificationNumber": {
+        "Name": "Individual Identification Number",
         "StartPosition": 40,
         "EndPosition": 54,
-        "Description": "Identification number"
+        "Description": "Optional ID for the receiver, such as an invoice or employee number."
       },
-      "IndividualName": {
+      "ReceivingIndividualName": {
+        "Name": "Receiving Individual Name",
         "StartPosition": 55,
         "EndPosition": 76,
-        "Description": "Receiver's name"
+        "Description": "Name of the individual or entity receiving the transaction."
       },
       "DiscretionaryData": {
+        "Name": "Discretionary Data",
         "StartPosition": 77,
         "EndPosition": 78,
-        "Description": "Optional data"
+        "Description": "Optional two-character field for company use."
       },
       "AddendaRecordIndicator": {
+        "Name": "Addenda Record Indicator",
         "StartPosition": 79,
         "EndPosition": 79,
-        "Description": "Indicates if addenda exists (0 or 1)"
+        "Description": "Indicates if addenda are present: '0' for none, '1' if addenda exist."
       },
       "TraceNumber": {
+        "Name": "Trace Number",
         "StartPosition": 80,
         "EndPosition": 94,
-        "Description": "Trace number"
+        "Description": "Unique number assigned to each transaction for tracking."
+      }
+    }
+  },
+  "AddendaRecord": {
+    "Name": "Addenda Record",
+    "TypeCode": 7,
+    "Description": "Adds supplementary details for an associated Entry Detail Record, often used for tax payments or remittance information.",
+    "Fields": {
+      "RecordTypeCode": {
+        "Name": "Record Type Code",
+        "StartPosition": 1,
+        "EndPosition": 1,
+        "Description": "Fixed code '7' indicating an Addenda Record."
+      },
+      "AddendaTypeCode": {
+        "Name": "Addenda Type Code",
+        "StartPosition": 2,
+        "EndPosition": 3,
+        "Description": "Specifies the type of addenda information included."
+      },
+      "PaymentRelatedInformation": {
+        "Name": "Payment Related Information",
+        "StartPosition": 4,
+        "EndPosition": 83,
+        "Description": "Supplementary information about the payment, often used for invoices, taxes, or detailed remittance data."
+      },
+      "AddendaSequenceNumber": {
+        "Name": "Addenda Sequence Number",
+        "StartPosition": 84,
+        "EndPosition": 87,
+        "Description": "Indicates the order of addenda records if multiple addenda are associated with an entry."
+      },
+      "EntryDetailSequenceNumber": {
+        "Name": "Entry Detail Sequence Number",
+        "StartPosition": 88,
+        "EndPosition": 94,
+        "Description": "Unique sequence number matching the associated Entry Detail Record."
       }
     }
   },
   "BatchControlRecord": {
+    "Name": "Batch Control Record",
     "TypeCode": 8,
-    "Description": "Summarizes the batch, providing totals for debits, credits, and counts.",
+    "Description": "Summarizes the batch, providing totals for debits, credits, and counts of entries.",
     "Fields": {
       "RecordTypeCode": {
+        "Name": "Record Type Code",
         "StartPosition": 1,
         "EndPosition": 1,
-        "Description": "Always 8"
+        "Description": "Fixed code '8' indicating a Batch Control Record."
       },
       "ServiceClassCode": {
+        "Name": "Service Class Code",
         "StartPosition": 2,
         "EndPosition": 4,
-        "Description": "Same as batch header"
+        "Description": "Service class code that matches the Batch Header Record."
       },
       "EntryAddendaCount": {
+        "Name": "Entry Addenda Count",
         "StartPosition": 5,
         "EndPosition": 10,
-        "Description": "Number of entries"
+        "Description": "Total count of Entry Detail and Addenda Records in the batch."
       },
       "EntryHash": {
+        "Name": "Entry Hash",
         "StartPosition": 11,
         "EndPosition": 20,
-        "Description": "Hash of routing numbers"
+        "Description": "Hash of the routing numbers in the batch for data integrity verification."
       },
       "TotalDebitEntryDollarAmount": {
+        "Name": "Total Debit Entry Dollar Amount",
         "StartPosition": 21,
         "EndPosition": 32,
-        "Description": "Total debits"
+        "Description": "Sum of all debit amounts in the batch."
       },
       "TotalCreditEntryDollarAmount": {
+        "Name": "Total Credit Entry Dollar Amount",
         "StartPosition": 33,
         "EndPosition": 44,
-        "Description": "Total credits"
+        "Description": "Sum of all credit amounts in the batch."
       },
       "CompanyIdentification": {
+        "Name": "Company Identification",
         "StartPosition": 45,
         "EndPosition": 54,
-        "Description": "Same as batch header"
+        "Description": "Identifies the company for the batch, matching the Batch Header Record."
+      },
+      "MessageAuthenticationCode": {
+        "Name": "Message Authentication Code",
+        "StartPosition": 55,
+        "EndPosition": 73,
+        "Description": "Code used for data integrity verification, if applicable."
+      },
+      "Reserved": {
+        "Name": "Reserved",
+        "StartPosition": 74,
+        "EndPosition": 79,
+        "Description": "Reserved space; leave blank."
       },
       "OriginatingDFIIdentification": {
-        "StartPosition": 55,
-        "EndPosition": 62,
-        "Description": "Originating DFI ID"
+        "Name": "Originating DFI Identification",
+        "StartPosition": 80,
+        "EndPosition": 87,
+        "Description": "Routing number of the originating DFI."
       },
       "BatchNumber": {
-        "StartPosition": 63,
-        "EndPosition": 73,
-        "Description": "Batch number"
+        "Name": "Batch Number",
+        "StartPosition": 88,
+        "EndPosition": 94,
+        "Description": "Unique identifier for the batch, assigned sequentially."
       }
     }
   },
   "FileControlRecord": {
-    "TypeCode": "9",
-    "Description": "Summarizes the entire file, including batch count, entry count, and dollar totals.",
+    "Name": "File Control Record",
+    "TypeCode": 9,
+    "Description": "Provides summary information for the entire ACH file, including batch counts and total dollar amounts.",
     "Fields": {
       "RecordTypeCode": {
+        "Name": "Record Type Code",
         "StartPosition": 1,
         "EndPosition": 1,
-        "Description": "Always 9"
+        "Description": "Fixed code '9' indicating a File Control Record."
       },
       "BatchCount": {
+        "Name": "Batch Count",
         "StartPosition": 2,
         "EndPosition": 7,
-        "Description": "Number of batches"
+        "Description": "Total number of batches in the file."
       },
       "BlockCount": {
+        "Name": "Block Count",
         "StartPosition": 8,
-        "EndPosition": 12,
-        "Description": "Number of blocks"
+        "EndPosition": 13,
+        "Description": "Number of physical blocks in the file."
       },
       "EntryAddendaCount": {
-        "StartPosition": 13,
-        "EndPosition": 18,
-        "Description": "Total number of entries"
+        "Name": "Entry Addenda Count",
+        "StartPosition": 14,
+        "EndPosition": 21,
+        "Description": "Total count of all Entry Detail and Addenda Records in the file."
       },
       "EntryHash": {
-        "StartPosition": 19,
-        "EndPosition": 28,
-        "Description": "Hash of routing numbers"
+        "Name": "Entry Hash",
+        "StartPosition": 22,
+        "EndPosition": 31,
+        "Description": "Hash of all routing numbers in the file for integrity verification."
       },
       "TotalDebitEntryDollarAmount": {
-        "StartPosition": 29,
-        "EndPosition": 40,
-        "Description": "Total debits"
+        "Name": "Total Debit Entry Dollar Amount",
+        "StartPosition": 32,
+        "EndPosition": 43,
+        "Description": "Sum of all debit transactions in the file."
       },
       "TotalCreditEntryDollarAmount": {
-        "StartPosition": 41,
-        "EndPosition": 52,
-        "Description": "Total credits"
+        "Name": "Total Credit Entry Dollar Amount",
+        "StartPosition": 44,
+        "EndPosition": 55,
+        "Description": "Sum of all credit transactions in the file."
+      },
+      "Reserved": {
+        "Name": "Reserved",
+        "StartPosition": 56,
+        "EndPosition": 94,
+        "Description": "Leave Blank"
       }
     }
   }
