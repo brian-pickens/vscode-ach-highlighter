@@ -1,76 +1,32 @@
 import * as vscode from 'vscode';
-import { SpecRecord } from './spec';
+import { Record } from './record';
 
-// this method is called when vs code is activated
+
 export function activate(context: vscode.ExtensionContext) {
-
-	let timeout: NodeJS.Timeout | undefined = undefined;
-
-	// create a decorator type that we use to decorate small numbers
-	const recordDecoration = vscode.window.createTextEditorDecorationType({
-		borderWidth: '1px',
-		borderStyle: 'solid',
-		overviewRulerColor: 'blue',
-		overviewRulerLane: vscode.OverviewRulerLane.Right,
+	const fieldDecorationType = vscode.window.createTextEditorDecorationType({
 		light: {
 			// this color will be used in light color themes
-			borderColor: 'darkblue'
+			backgroundColor: 'darkGrey'
 		},
 		dark: {
 			// this color will be used in dark color themes
-			borderColor: 'lightblue'
+			backgroundColor: 'lightGrey'
 		}
 	});
 
 	let activeEditor = vscode.window.activeTextEditor;
 
-	function updateDecorations() {
-		if (!activeEditor) {
-			return;
-		}
-		
-		const regEx = /.+/g;
-		const text = activeEditor.document.getText();
-		const recordDecorationOptions: vscode.DecorationOptions[] = [];
-		let match;
-		while ((match = regEx.exec(text))) {
-			const startPos = activeEditor.document.positionAt(match.index);
-			const endPos = activeEditor.document.positionAt(match.index + match[0].length);
-			const decoration = { range: new vscode.Range(startPos, endPos), hoverMessage: 'Number **' + match[0] + '**' };
-			if (match[0].length < 3) {
-				recordDecorationOptions.push(decoration);
-			}
-		}
-		activeEditor.setDecorations(recordDecoration, recordDecorationOptions);
-	}
+    vscode.languages.registerHoverProvider('*', {
+        provideHover(document, cursor, token) {
 
-	function triggerUpdateDecorations(throttle = false) {
-		if (timeout) {
-			clearTimeout(timeout);
-			timeout = undefined;
-		}
-		if (throttle) {
-			timeout = setTimeout(updateDecorations, 500);
-		} else {
-			updateDecorations();
-		}
-	}
+			const text = document.lineAt(cursor.line).text.substring(0, 94);
+			const record = new Record(text);
+			const selectedField = record.getField(cursor.character+1);
+			if (selectedField === null) { return; }
 
-	if (activeEditor) {
-		triggerUpdateDecorations();
-	}
-
-	vscode.window.onDidChangeActiveTextEditor(editor => {
-		activeEditor = editor;
-		if (editor) {
-			triggerUpdateDecorations();
-		}
-	}, null, context.subscriptions);
-
-	vscode.workspace.onDidChangeTextDocument(event => {
-		if (activeEditor && event.document === activeEditor.document) {
-			triggerUpdateDecorations(true);
-		}
-	}, null, context.subscriptions);
+			activeEditor?.setDecorations(fieldDecorationType, [new vscode.Range(new vscode.Position(cursor.line, selectedField.StartPosition), new vscode.Position(cursor.line, selectedField.EndPosition))]);
+			return new vscode.Hover(new vscode.MarkdownString(selectedField?.Name));
+        }
+    });
 
 }
