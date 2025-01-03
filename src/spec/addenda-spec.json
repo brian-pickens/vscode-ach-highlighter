@@ -160,13 +160,13 @@
                 "Name": "Originator Name",
                 "StartPosition": 4,
                 "EndPosition": 38,
-                "Description": "Name of the originator from parms_mst.company. Field is 60 characters but will be truncated to 35."
+                "Description": "Name of the originator. Field is 60 characters but will be truncated to 35."
             },
             "StreetAddress": {
                 "Name": "Street Address",
                 "StartPosition": 39,
                 "EndPosition": 73,
-                "Description": "Physical address of the originator from parms_mst.addr##1. A PO Box is not allowed."
+                "Description": "Physical address of the originator. A PO Box is not allowed."
             },
             "Reserved": {
                 "Name": "Reserved",
@@ -203,13 +203,13 @@
                 "Name": "Originator City and State",
                 "StartPosition": 4,
                 "EndPosition": 38,
-                "Description": "The originator's city and state/province from parms_mst.city and parms_mst.state. Use an asterisk (*) between city and state, and a backslash (\\) as the terminator."
+                "Description": "The originator's city and state/province. Use an asterisk (*) between city and state, and a backslash (\\) as the terminator."
             },
             "OriginatorCountryPostalCode": {
                 "Name": "Originator Country and Postal Code",
                 "StartPosition": 39,
                 "EndPosition": 73,
-                "Description": "The originator's country and postal code from parms_mst.country and parms_mst.zip. Use an asterisk (*) between country and postal code, and a backslash (\\) as the terminator."
+                "Description": "The originator's country and postal code from. Use an asterisk (*) between country and postal code, and a backslash (\\) as the terminator."
             },
             "Reserved": {
                 "Name": "Reserved",
@@ -258,7 +258,7 @@
                 "Name": "Originating Branch Country Code",
                 "StartPosition": 75,
                 "EndPosition": 77,
-                "Description": "Country code of the originating branch from parms_mst.country."
+                "Description": "Country code of the originating branch."
             },
             "Reserved": {
                 "Name": "Reserved",
@@ -373,12 +373,12 @@
         }
     },
     "16": {
-        "Name": "IAT Receiving DFI Identification Number Qualifier",
+        "Name": "IAT Reciever City, State, Country, and Postal Code",
         "TypeCode": 16,
         "SecCodes": [
             "IAT"
         ],
-        "Description": "Specifies the identification number qualifier for the receiving DFI.",
+        "Description": "Provides information about the recievers's city, state, country, and postal code in the international ACH transaction.",
         "Fields": {
             "RecordTypeCode": {
                 "Name": "Record Type Code",
@@ -390,29 +390,41 @@
                 "Name": "Addenda Type Code",
                 "StartPosition": 2,
                 "EndPosition": 3,
-                "Description": "Type code '16' for Receiving DFI ID Qualifier."
+                "Description": "Type code '16' specifying Reciever's City, State, Country, and Postal Code information."
             },
-            "ReceivingDFIIDQualifier": {
-                "Name": "Receiving DFI ID Qualifier",
+            "RecieverCityState": {
+                "Name": "Reciever City and State",
                 "StartPosition": 4,
-                "EndPosition": 6,
-                "Description": "Qualifier indicating the type of ID number for the receiving DFI."
+                "EndPosition": 38,
+                "Description": "The reciever's city and state/province. Use an asterisk (*) between city and state, and a backslash (\\) as the terminator."
+            },
+            "RecieverCountryPostalCode": {
+                "Name": "Reciever Country and Postal Code",
+                "StartPosition": 39,
+                "EndPosition": 73,
+                "Description": "The reciever's country and postal code. Use an asterisk (*) between country and postal code, and a backslash (\\) as the terminator."
             },
             "Reserved": {
                 "Name": "Reserved",
-                "StartPosition": 7,
+                "StartPosition": 74,
+                "EndPosition": 87,
+                "Description": "Reserved for future use; typically left blank."
+            },
+            "EntryDetailSeqNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
                 "EndPosition": 94,
-                "Description": "Reserved for future use."
+                "Description": "This number matches the last seven digits of the Trace Number."
             }
         }
     },
     "17": {
-        "Name": "IAT Receiving DFI Identification",
+        "Name": "IAT Optional Addenda Record for Remittance 717",
         "TypeCode": 17,
         "SecCodes": [
             "IAT"
         ],
-        "Description": "Contains the identification number of the receiving DFI.",
+        "Description": "The IAT Addenda Record for Remittance Information identifies key information related to the payment.",
         "Fields": {
             "RecordTypeCode": {
                 "Name": "Record Type Code",
@@ -426,27 +438,33 @@
                 "EndPosition": 3,
                 "Description": "Type code '17' for Receiving DFI Identification."
             },
-            "ReceivingDFIID": {
-                "Name": "Receiving DFI Identification",
+            "PaymentRelatedInformation": {
+                "Name": "Payment Related Information",
                 "StartPosition": 4,
-                "EndPosition": 18,
+                "EndPosition": 83,
                 "Description": "Identification number of the receiving DFI."
             },
-            "Reserved": {
-                "Name": "Reserved",
-                "StartPosition": 19,
-                "EndPosition": 94,
+            "AddendaSequenceNumber": {
+                "Name": "Addenda Sequence Number",
+                "StartPosition": 84,
+                "EndPosition": 87,
                 "Description": "Reserved for future use."
+            },
+            "EntryDetailSeqNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "This number matches the last seven digits of the Trace Number."
             }
         }
     },
     "18": {
-        "Name": "IAT Foreign Exchange Reference Information",
+        "Name": "Business Transaction Information",
         "TypeCode": 18,
-        "Description": "Provides foreign exchange information related to the international ACH transaction.",
         "SecCodes": [
             "IAT"
         ],
+        "Description": "The IAT record identifies information on each Foreign Correspondent Bank involved in the processing of the IAT entry. If no Foreign Correspondent Bank is involved,t he record should not be included. A maximum of five of these Addenda Records may be included with each IAT entry.",
         "Fields": {
             "RecordTypeCode": {
                 "Name": "Record Type Code",
@@ -458,37 +476,49 @@
                 "Name": "Addenda Type Code",
                 "StartPosition": 2,
                 "EndPosition": 3,
-                "Description": "Type code '18' for Foreign Exchange Reference Information."
+                "Description": "Type code '18' for optional business transaction information."
             },
-            "ForeignExchangeIndicator": {
-                "Name": "Foreign Exchange Indicator",
+            "ForeignCorrespondentBankName": {
+                "Name": "Foreign Correspondant Bank Name",
                 "StartPosition": 4,
-                "EndPosition": 4,
-                "Description": "Indicates whether foreign exchange is involved ('Y' or 'N')."
+                "EndPosition": 38,
+                "Description": "The name of the Foreign Correspondent Bank"
             },
-            "ForeignExchangeRate": {
-                "Name": "Foreign Exchange Rate",
-                "StartPosition": 5,
-                "EndPosition": 19,
-                "Description": "Exchange rate for the currency conversion."
+            "ForeignCorrespondentBankIDNumberQualifier": {
+                "Name": "Foreign Correspondant Bank ID Number Qualifier",
+                "StartPosition": 39,
+                "EndPosition": 40,
+                "Description": "Foreign Correspondent Bank Identification Number Qualifier contains a 2-digit code that identifies the numbering scheme used in the Foreign Correspondent Bank Identification Number field. Code values for this field are:/n“01” = National Clearing System\n“02” = BIC Code\n“03” = IBAN Code"
             },
-            "ISOOriginatingCurrencyCode": {
-                "Name": "ISO Originating Currency Code",
-                "StartPosition": 20,
-                "EndPosition": 22,
-                "Description": "ISO currency code of the originating currency."
+            "ForeignCorrespondentBankIDNumber": {
+                "Name": "Foreign Correspondant Bank ID Number",
+                "StartPosition": 41,
+                "EndPosition": 74,
+                "Description": "Foreign Correspondent Bank Identification Number contains the bank ID number of the Foreign Correspondent Bank"
             },
-            "ISODestinationCurrencyCode": {
-                "Name": "ISO Destination Currency Code",
-                "StartPosition": 23,
-                "EndPosition": 25,
-                "Description": "ISO currency code of the destination currency."
+            "ForeignCorrespondentBankBranchCountryCode": {
+                "Name": "Foreign Correspondant Bank Branch Country Code",
+                "StartPosition": 75,
+                "EndPosition": 77,
+                "Description": "Foreign Correspondent Bank Branch Country Code contains the two-character code, as approved by the International Organization for Standardization (ISO), to identify the country in which the branch of the Foreign Correspondent Bank is located. Values can be found on the International Organization for Standardization website: www.iso.org."
             },
-            "Reserved": {
-                "Name": "Reserved",
-                "StartPosition": 26,
+            "BlankSpace": {
+                "Name": "Blank Space",
+                "StartPosition": 78,
+                "EndPosition": 83,
+                "Description": "Must be empty"
+            },
+            "AddendaSequenceNumber": {
+                "Name": "Addenda Sequence Number",
+                "StartPosition": 84,
+                "EndPosition": 87,
+                "Description": "Sequence Number is consecutively assigned to each Addenda18 Record following an Entry Detail Record."
+            },
+            "EntryDetailSeqNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
                 "EndPosition": 94,
-                "Description": "Reserved for future use."
+                "Description": "This number matches the last seven digits of the Trace Number."
             }
         }
     },
