@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	// Loop backwards from the current position looking for the next 5 record and return its sec code.
+	// Loop backwards from the current position looking for the previous 5 record and return its sec code.
 	function GetSecCode(document: vscode.TextDocument, cursor: vscode.Position): string {
 		let typeCode = "6";
 		let line = cursor.line;
