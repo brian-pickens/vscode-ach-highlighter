@@ -9,3 +9,7 @@ Is an extension that highlights the fields of an Ach File, giving its name and a
 ### 0.0.1
 
 Alpha release
+
+### 0.0.2
+
+Beta release

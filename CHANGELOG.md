@@ -6,4 +6,5 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-- Initial release
+- v0.0.1 Highlights Nacha Ach file fields. Supports PPD and CCD entries as well as type 5 addenda records.
+- v0.0.2 Adds support for the remaining SEC code entries and addenda records. Highlighting tweeks and support for light and dark themes.
