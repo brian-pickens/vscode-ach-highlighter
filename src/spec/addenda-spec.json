@@ -1,0 +1,577 @@
+{
+    "02": {
+        "Name": "POS/SHR Addenda Record",
+        "TypeCode": 2,
+        "SecCodes": [
+            "POS",
+            "SHR"
+        ],
+        "Description": "Used to provide additional information for Point-of-Sale (POS) and Shared Network (SHR) entries, often including terminal location details and transaction identifiers.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '02' specifying a POS/SHR addenda record."
+            },
+            "ReferenceInformation": {
+                "Name": "Reference Information",
+                "StartPosition": 4,
+                "EndPosition": 83,
+                "Description": "Freeform field containing additional transaction reference information, often including terminal ID, location, or other details."
+            },
+            "AddendaSequenceNumber": {
+                "Name": "Addenda Sequence Number",
+                "StartPosition": 84,
+                "EndPosition": 87,
+                "Description": "Indicates the sequence of this addenda record if multiple addenda are present."
+            },
+            "EntryDetailSequenceNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "Links this addenda record to the associated Entry Detail Record by repeating its trace number's last seven digits."
+            }
+        }
+    },
+    "05": {
+        "Name": "CCD/CTX Addenda Record",
+        "TypeCode": 5,
+        "SecCodes": [
+            "CCD",
+            "CTX",
+            "WEB",
+            "TEL",
+            "XCK"
+        ],
+        "Description": "Used to provide additional payment-related information for CCD, CTX, WEB, TEL, and XCK entries. Commonly used for remittance details in business-to-business transactions.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '05' specifying a CCD/CTX addenda record."
+            },
+            "PaymentRelatedInformation": {
+                "Name": "Payment Related Information",
+                "StartPosition": 4,
+                "EndPosition": 83,
+                "Description": "Freeform text field containing additional payment information, such as invoice numbers or remittance details."
+            },
+            "AddendaSequenceNumber": {
+                "Name": "Addenda Sequence Number",
+                "StartPosition": 84,
+                "EndPosition": 87,
+                "Description": "Indicates the sequence of this addenda record when multiple addenda records are present."
+            },
+            "EntryDetailSequenceNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "Links this addenda record to the associated Entry Detail Record by repeating its trace number's last seven digits."
+            }
+        }
+    },
+    "10": {
+        "Name": "Foreign Payment Addenda Record",
+        "TypeCode": 10,
+        "Description": "Provides details about a foreign payment, including the transaction code, amount, and company information.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '10' specifying Foreign Payment Addenda."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 4,
+                "EndPosition": 6,
+                "Description": "Transaction code, set to 'BUS' for business-related payments."
+            },
+            "ForeignPaymentAmount": {
+                "Name": "Foreign Payment Amount",
+                "StartPosition": 7,
+                "EndPosition": 24,
+                "Description": "Foreign payment amount calculated as DerDomAmtApplied * 100. No decimal point."
+            },
+            "ForeignTraceNumber": {
+                "Name": "Foreign Trace Number",
+                "StartPosition": 25,
+                "EndPosition": 46,
+                "Description": "Blank field, left empty as per specification."
+            },
+            "ReceivingCompanyName": {
+                "Name": "Receiving Company Name",
+                "StartPosition": 47,
+                "EndPosition": 81,
+                "Description": "Name of the receiving company, sourced from vendaddr_mst.name."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 82,
+                "EndPosition": 87,
+                "Description": "Reserved field, space-filled for future use."
+            },
+            "EntryDetail": {
+                "Name": "Entry Detail",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "This number matches the last seven digits of the Trace Number."
+            }
+        }
+    },
+    "11": {
+        "Name": "IAT Originator Information",
+        "TypeCode": 11,
+        "Description": "Provides information about the originator of the international ACH transaction, including the originator's name and physical street address.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '11' specifying Originator Information."
+            },
+            "OriginatorName": {
+                "Name": "Originator Name",
+                "StartPosition": 4,
+                "EndPosition": 38,
+                "Description": "Name of the originator. Field is 60 characters but will be truncated to 35."
+            },
+            "StreetAddress": {
+                "Name": "Street Address",
+                "StartPosition": 39,
+                "EndPosition": 73,
+                "Description": "Physical address of the originator. A PO Box is not allowed."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 74,
+                "EndPosition": 87,
+                "Description": "Reserved for future use; typically left blank."
+            },
+            "EntryDetailSeqNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "This number matches the last seven digits of the Trace Number."
+            }
+        }
+    },
+    "12": {
+        "Name": "IAT Originator City, State, Country, and Postal Code",
+        "TypeCode": 12,
+        "Description": "Provides information about the originator's city, state, country, and postal code in the international ACH transaction.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '12' specifying Originator City, State, Country, and Postal Code information."
+            },
+            "OriginatorCityState": {
+                "Name": "Originator City and State",
+                "StartPosition": 4,
+                "EndPosition": 38,
+                "Description": "The originator's city and state/province. Use an asterisk (*) between city and state, and a backslash (\\) as the terminator."
+            },
+            "OriginatorCountryPostalCode": {
+                "Name": "Originator Country and Postal Code",
+                "StartPosition": 39,
+                "EndPosition": 73,
+                "Description": "The originator's country and postal code from. Use an asterisk (*) between country and postal code, and a backslash (\\) as the terminator."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 74,
+                "EndPosition": 87,
+                "Description": "Reserved for future use; typically left blank."
+            },
+            "EntryDetailSeqNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "This number matches the last seven digits of the Trace Number."
+            }
+        }
+    },
+    "13": {
+        "Name": "IAT Originating Bank Information",
+        "TypeCode": 13,
+        "Description": "Provides information about the originating bank in the international ACH transaction, including bank name, ID, and country code.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '13' specifying Originating Bank Information."
+            },
+            "OriginatingBankName": {
+                "Name": "Originating Bank Name",
+                "StartPosition": 4,
+                "EndPosition": 38,
+                "Description": "Name of the originating bank from bank_hdr_mst.name."
+            },
+            "OriginatingBankID": {
+                "Name": "Originating Bank ID",
+                "StartPosition": 41,
+                "EndPosition": 74,
+                "Description": "ID of the originating bank from bank_hdr_bank_file_fmt_mst.ach_orig_id."
+            },
+            "OriginatingBranchCountryCode": {
+                "Name": "Originating Branch Country Code",
+                "StartPosition": 75,
+                "EndPosition": 77,
+                "Description": "Country code of the originating branch."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 78,
+                "EndPosition": 87,
+                "Description": "Reserved for future use; typically left blank."
+            },
+            "EntryDetailSeqNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "This number matches the last seven digits of the Trace Number."
+            }
+        }
+    },
+    "14": {
+        "Name": "IAT Receiving Bank Information",
+        "TypeCode": 14,
+        "Description": "Provides information about the receiving bank in the international ACH transaction, including bank name, routing number, and country code.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '14' specifying Receiving Bank Information."
+            },
+            "ReceivingBankName": {
+                "Name": "Receiving Bank Name",
+                "StartPosition": 4,
+                "EndPosition": 38,
+                "Description": "Name of the receiving bank from vendor_mst.bank_name."
+            },
+            "ReceivingNumberQualifier": {
+                "Name": "Receiving Number Qualifier",
+                "StartPosition": 39,
+                "EndPosition": 40,
+                "Description": "Qualifier for the receiving bank's routing number from vendor.transit_reference. Defaults to '01' if the Receiving Branch Country Code is 'US'."
+            },
+            "ReceivingBankRoutingNumber": {
+                "Name": "Receiving Bank Routing Number",
+                "StartPosition": 41,
+                "EndPosition": 74,
+                "Description": "Routing number of the receiving bank from vendor_mst.transit."
+            },
+            "ReceivingBranchCountryCode": {
+                "Name": "Receiving Branch Country Code",
+                "StartPosition": 75,
+                "EndPosition": 77,
+                "Description": "Country code of the receiving branch from vendaddr_mst.country."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 78,
+                "EndPosition": 87,
+                "Description": "Reserved for future use; typically left blank."
+            },
+            "EntryDetailSeqNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "This number matches the last seven digits of the Trace Number."
+            }
+        }
+    },
+    "15": {
+        "Name": "IAT Receiver Information",
+        "TypeCode": 15,
+        "Description": "Provides information about the receiver in the international ACH transaction, including receiver ID and street address.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '15' specifying Receiver Information."
+            },
+            "ReceiversIDNumber": {
+                "Name": "Receiver's ID Number",
+                "StartPosition": 4,
+                "EndPosition": 18,
+                "Description": "Identifier for the receiver from vendor_mst.vend_num."
+            },
+            "ReceiversStreetAddress": {
+                "Name": "Receiver's Street Address",
+                "StartPosition": 19,
+                "EndPosition": 53,
+                "Description": "Street address of the receiver from vendaddr_mst.addr##1 (either vadRAddr_1 or VadAddr_1)."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 54,
+                "EndPosition": 87,
+                "Description": "Reserved for future use, space-filled."
+            },
+            "EntryDetailSeqNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "This number matches the last seven digits of the Trace Number."
+            }
+        }
+    },
+    "16": {
+        "Name": "IAT Reciever City, State, Country, and Postal Code",
+        "TypeCode": 16,
+        "SecCodes": [
+            "IAT"
+        ],
+        "Description": "Provides information about the recievers's city, state, country, and postal code in the international ACH transaction.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '16' specifying Reciever's City, State, Country, and Postal Code information."
+            },
+            "RecieverCityState": {
+                "Name": "Reciever City and State",
+                "StartPosition": 4,
+                "EndPosition": 38,
+                "Description": "The reciever's city and state/province. Use an asterisk (*) between city and state, and a backslash (\\) as the terminator."
+            },
+            "RecieverCountryPostalCode": {
+                "Name": "Reciever Country and Postal Code",
+                "StartPosition": 39,
+                "EndPosition": 73,
+                "Description": "The reciever's country and postal code. Use an asterisk (*) between country and postal code, and a backslash (\\) as the terminator."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 74,
+                "EndPosition": 87,
+                "Description": "Reserved for future use; typically left blank."
+            },
+            "EntryDetailSeqNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "This number matches the last seven digits of the Trace Number."
+            }
+        }
+    },
+    "17": {
+        "Name": "IAT Optional Addenda Record for Remittance 717",
+        "TypeCode": 17,
+        "SecCodes": [
+            "IAT"
+        ],
+        "Description": "The IAT Addenda Record for Remittance Information identifies key information related to the payment.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '17' for Receiving DFI Identification."
+            },
+            "PaymentRelatedInformation": {
+                "Name": "Payment Related Information",
+                "StartPosition": 4,
+                "EndPosition": 83,
+                "Description": "Identification number of the receiving DFI."
+            },
+            "AddendaSequenceNumber": {
+                "Name": "Addenda Sequence Number",
+                "StartPosition": 84,
+                "EndPosition": 87,
+                "Description": "Reserved for future use."
+            },
+            "EntryDetailSeqNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "This number matches the last seven digits of the Trace Number."
+            }
+        }
+    },
+    "18": {
+        "Name": "Business Transaction Information",
+        "TypeCode": 18,
+        "SecCodes": [
+            "IAT"
+        ],
+        "Description": "The IAT record identifies information on each Foreign Correspondent Bank involved in the processing of the IAT entry. If no Foreign Correspondent Bank is involved,t he record should not be included. A maximum of five of these Addenda Records may be included with each IAT entry.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '18' for optional business transaction information."
+            },
+            "ForeignCorrespondentBankName": {
+                "Name": "Foreign Correspondant Bank Name",
+                "StartPosition": 4,
+                "EndPosition": 38,
+                "Description": "The name of the Foreign Correspondent Bank"
+            },
+            "ForeignCorrespondentBankIDNumberQualifier": {
+                "Name": "Foreign Correspondant Bank ID Number Qualifier",
+                "StartPosition": 39,
+                "EndPosition": 40,
+                "Description": "Foreign Correspondent Bank Identification Number Qualifier contains a 2-digit code that identifies the numbering scheme used in the Foreign Correspondent Bank Identification Number field. Code values for this field are:/n“01” = National Clearing System\n“02” = BIC Code\n“03” = IBAN Code"
+            },
+            "ForeignCorrespondentBankIDNumber": {
+                "Name": "Foreign Correspondant Bank ID Number",
+                "StartPosition": 41,
+                "EndPosition": 74,
+                "Description": "Foreign Correspondent Bank Identification Number contains the bank ID number of the Foreign Correspondent Bank"
+            },
+            "ForeignCorrespondentBankBranchCountryCode": {
+                "Name": "Foreign Correspondant Bank Branch Country Code",
+                "StartPosition": 75,
+                "EndPosition": 77,
+                "Description": "Foreign Correspondent Bank Branch Country Code contains the two-character code, as approved by the International Organization for Standardization (ISO), to identify the country in which the branch of the Foreign Correspondent Bank is located. Values can be found on the International Organization for Standardization website: www.iso.org."
+            },
+            "BlankSpace": {
+                "Name": "Blank Space",
+                "StartPosition": 78,
+                "EndPosition": 83,
+                "Description": "Must be empty"
+            },
+            "AddendaSequenceNumber": {
+                "Name": "Addenda Sequence Number",
+                "StartPosition": 84,
+                "EndPosition": 87,
+                "Description": "Sequence Number is consecutively assigned to each Addenda18 Record following an Entry Detail Record."
+            },
+            "EntryDetailSeqNumber": {
+                "Name": "Entry Detail Sequence Number",
+                "StartPosition": 88,
+                "EndPosition": 94,
+                "Description": "This number matches the last seven digits of the Trace Number."
+            }
+        }
+    },
+    "98": {
+        "Name": "Notification of Change Addenda Record",
+        "TypeCode": 98,
+        "SecCodes": [
+            "COR"
+        ],
+        "Description": "Provides details on the specific change needed in the recipient’s account information, used with COR SEC code entries.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '7' indicating an Addenda Record."
+            },
+            "AddendaTypeCode": {
+                "Name": "Addenda Type Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type code '98' for Notification of Change."
+            },
+            "CorrectedData": {
+                "Name": "Corrected Data",
+                "StartPosition": 4,
+                "EndPosition": 53,
+                "Description": "Details of the corrected information, such as new routing or account number."
+            },
+            "ChangeCode": {
+                "Name": "Change Code",
+                "StartPosition": 54,
+                "EndPosition": 56,
+                "Description": "A three-character code indicating the type of change (e.g., C01 for incorrect account number)."
+            },
+            "OriginalEntryTraceNumber": {
+                "Name": "Original Entry Trace Number",
+                "StartPosition": 57,
+                "EndPosition": 73,
+                "Description": "Trace number from the original entry to which the correction applies."
+            },
+            "DateOfChange": {
+                "Name": "Date of Change",
+                "StartPosition": 74,
+                "EndPosition": 79,
+                "Description": "Date the change was made, in YYMMDD format."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Reserved for future use."
+            }
+        }
+    }
+}

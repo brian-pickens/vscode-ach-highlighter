@@ -9,3 +9,9 @@ Is an extension that highlights the fields of an Ach File, giving its name and a
 ### [0.0.1](https://github.com/brian-pickens/vscode-ach-highlighter/releases/tag/0.0.1)
 
 Alpha release - Supports PPD and CCD entries as well as type 5 addenda records.
+
+### [0.0.2](https://github.com/brian-pickens/vscode-ach-highlighter/releases/tag/0.0.1)
+
+Beta release
+
+Adds support for the remaining SEC code entries and addenda records. Highlighting tweeks and support for light and dark themes.
