@@ -1,0 +1,1511 @@
+{
+    "ACK": {
+        "Name": "Acknowledgment Entry",
+        "TypeCode": 6,
+        "Description": "A non-monetary entry used to acknowledge the receipt of a CCD credit payment, often for corporate disbursement purposes.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of acknowledgment transaction, such as '22' for credit to a corporate account."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's account number at the receiving financial institution."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Reserved for future use; typically left blank."
+            },
+            "IndividualIdentificationNumber": {
+                "Name": "Individual Identification Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Unique identifier assigned by the originator for tracking purposes."
+            },
+            "IndividualName": {
+                "Name": "Individual Name",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Name of the entity associated with the acknowledgment entry."
+            },
+            "DiscretionaryData": {
+                "Name": "Discretionary Data",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "Optional field for use by the originator; typically left blank."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' indicating no addenda record is present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "ADV": {
+        "Name": "Automated Accounting Advice",
+        "TypeCode": 6,
+        "Description": "Used by financial institutions to exchange non-monetary advice entries, often for recording accounting information or interbank settlements.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Code indicating the type of non-monetary advice transaction (e.g., '21' for credit advice, '22' for debit advice)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the financial institution receiving the advice entry."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Account number used by the receiving DFI to track or process the advice entry."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal). Used for advice entries, even though they are non-monetary."
+            },
+            "AdviceNumber": {
+                "Name": "Advice Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Unique identifier assigned to the advice entry for tracking purposes."
+            },
+            "AdviceDescription": {
+                "Name": "Advice Description",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Description of the advice entry, such as 'Interbank Settlement'."
+            },
+            "DiscretionaryData": {
+                "Name": "Discretionary Data",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "Optional field for internal use by the financial institution."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'1' if addenda is present, '0' if no addenda."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originating institution."
+            }
+        }
+    },
+    "ATX": {
+        "Name": "Financial EDI Acknowledgment",
+        "TypeCode": 6,
+        "Description": "A non-monetary acknowledgment entry used to confirm the receipt of a financial EDI transaction, typically in business-to-business exchanges.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of acknowledgment transaction, such as '22' for a credit acknowledgment or '27' for a debit acknowledgment."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the financial institution receiving the acknowledgment."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the receiving DFI's routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Account number used by the receiving DFI to track or process the acknowledgment entry."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Reserved for future use; typically left blank."
+            },
+            "IndividualIdentificationNumber": {
+                "Name": "Individual Identification Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Unique identifier assigned by the originator for tracking the acknowledgment."
+            },
+            "IndividualName": {
+                "Name": "Individual Name",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Name of the individual or entity associated with the acknowledgment entry."
+            },
+            "DiscretionaryData": {
+                "Name": "Discretionary Data",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "Optional field for use by the originator; typically left blank."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' indicating no addenda record is present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator for the acknowledgment."
+            }
+        }
+    },
+    "PPD": {
+        "Name": "Prearranged Payment and Deposit Entry",
+        "TypeCode": 6,
+        "Description": "Used for direct deposit (credit) or preauthorized bill payments (debit) for consumer accounts.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Identifies the type of transaction (e.g., credit to checking account)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving bank."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the receiving bank's routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's account number at the receiving bank."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "IndividualIdentificationNumber": {
+                "Name": "Individual Identification Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Identification number for the receiver (e.g., employee ID)."
+            },
+            "IndividualName": {
+                "Name": "Individual Name",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Name of the receiver."
+            },
+            "DiscretionaryData": {
+                "Name": "Discretionary Data",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "Optional field for use by the originator."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique number assigned for tracking by the originator."
+            }
+        }
+    },
+    "CCD": {
+        "Name": "Corporate Credit or Debit Entry",
+        "TypeCode": 6,
+        "Description": "Used for corporate payments, such as vendor payments, payroll funding, and tax payments.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Identifies the type of transaction (credit or debit)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the receiving DFI's routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Account number of the receiver."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents."
+            },
+            "IdentificationNumber": {
+                "Name": "Identification Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Receiver’s identification number, such as invoice number."
+            },
+            "ReceivingCompanyName": {
+                "Name": "Receiving Company Name",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Name of the receiving corporate entity."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "Reserved for future use; typically blank."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Tracking number assigned by the originator."
+            }
+        }
+    },
+    "CTX": {
+        "Name": "Corporate Trade Exchange",
+        "TypeCode": 6,
+        "Description": "Used for complex corporate payments, supporting multiple addenda records for detailed remittance information.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Type of transaction (e.g., corporate debit or credit)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Receiving bank's routing number."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents."
+            },
+            "IdentificationNumber": {
+                "Name": "Identification Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Receiver identification, such as an invoice number."
+            },
+            "ReceivingCompanyName": {
+                "Name": "Receiving Company Name",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Name of the receiving company."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "Reserved for future use; typically blank."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique number for tracking."
+            }
+        }
+    },
+    "WEB": {
+        "Name": "Internet-Initiated/Mobile Entries",
+        "TypeCode": 6,
+        "Description": "Used for debit or credit entries authorized over the internet or mobile devices.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Identifies the transaction type (debit or credit)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving bank."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents."
+            },
+            "IndividualIdentificationNumber": {
+                "Name": "Individual Identification Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Receiver’s unique identification."
+            },
+            "IndividualName": {
+                "Name": "Individual Name",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Name of the receiver."
+            },
+            "PaymentTypeCode": {
+                "Name": "Payment Type Code",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "'S' for single, 'R' for recurring payment."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique number assigned for tracking."
+            }
+        }
+    },
+    "TEL": {
+        "Name": "Telephone-Initiated Entry",
+        "TypeCode": 6,
+        "Description": "Used for ACH debit entries authorized over the telephone.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Transaction type identifier."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving bank."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for routing number verification."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver’s bank account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents."
+            },
+            "IndividualIdentificationNumber": {
+                "Name": "Individual Identification Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Identification number for the receiver."
+            },
+            "IndividualName": {
+                "Name": "Individual Name",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Name of the receiver."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "Reserved field, typically blank."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "ARC": {
+        "Name": "Accounts Receivable Entry",
+        "TypeCode": 6,
+        "Description": "Used for converting consumer checks received by mail or at a dropbox into ACH debit transactions.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of transaction (e.g., debit to consumer checking)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's bank account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "IndividualIdentificationNumber": {
+                "Name": "Individual Identification Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Optional identifier for the receiver (e.g., check number)."
+            },
+            "IndividualName": {
+                "Name": "Individual Name",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Name of the check writer or receiver."
+            },
+            "DiscretionaryData": {
+                "Name": "Discretionary Data",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "Optional field for company use."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "BOC": {
+        "Name": "Back Office Conversion Entry",
+        "TypeCode": 6,
+        "Description": "Used for converting checks received at the point of sale or manned bill payment locations into ACH debit transactions, which are then processed in the back office.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of transaction (e.g., consumer debit to checking account)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's bank account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "CheckSerialNumber": {
+                "Name": "Check Serial Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Serial number of the check being converted to ACH."
+            },
+            "IndividualName": {
+                "Name": "Individual Name",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Name of the check writer or receiver."
+            },
+            "DiscretionaryData": {
+                "Name": "Discretionary Data",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "Optional field for use by the originator."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "POP": {
+        "Name": "Point-of-Purchase Entry",
+        "TypeCode": 6,
+        "Description": "Used for converting checks presented in person at the point of sale into ACH debit transactions.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of transaction (e.g., consumer debit to checking account)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's bank account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "CheckSerialNumber": {
+                "Name": "Check Serial Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Serial number of the check being converted to ACH."
+            },
+            "TerminalCity": {
+                "Name": "Terminal City",
+                "StartPosition": 55,
+                "EndPosition": 64,
+                "Description": "City where the point-of-purchase terminal is located."
+            },
+            "TerminalState": {
+                "Name": "Terminal State",
+                "StartPosition": 65,
+                "EndPosition": 66,
+                "Description": "State where the point-of-purchase terminal is located."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "RCK": {
+        "Name": "Re-presented Check Entry",
+        "TypeCode": 6,
+        "Description": "Used to re-present a check that was returned due to insufficient or uncollected funds as an ACH debit.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of transaction (e.g., debit to consumer checking)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's bank account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "CheckSerialNumber": {
+                "Name": "Check Serial Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Serial number of the check being re-presented as an ACH entry."
+            },
+            "ItemTypeIndicator": {
+                "Name": "Item Type Indicator",
+                "StartPosition": 55,
+                "EndPosition": 55,
+                "Description": "Indicates the type of item being re-presented; 'R' for re-presented checks."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "CIE": {
+        "Name": "Customer Initiated Entry",
+        "TypeCode": 6,
+        "Description": "Used for consumer-initiated credit entries, typically to pay bills through a bank's online bill payment service.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Identifies the type of transaction (e.g., credit to consumer checking account)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the receiving bank's routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's account number at the receiving bank."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "IndividualIdentificationNumber": {
+                "Name": "Individual Identification Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Identification number for the transaction, typically assigned by the consumer."
+            },
+            "IndividualName": {
+                "Name": "Individual Name",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Name of the individual or entity making the payment."
+            },
+            "DiscretionaryData": {
+                "Name": "Discretionary Data",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "Optional field for originator's use."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "IAT": {
+        "Name": "International ACH Transaction",
+        "TypeCode": 6,
+        "Description": "Used for ACH entries destined for or originating from financial institutions outside the U.S.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of transaction (e.g., international credit or debit)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the U.S. correspondent bank."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the U.S. correspondent bank's routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's account number at the foreign financial institution."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "ForeignExchangeIndicator": {
+                "Name": "Foreign Exchange Indicator",
+                "StartPosition": 40,
+                "EndPosition": 42,
+                "Description": "Indicates whether foreign exchange is involved ('FX' for yes, 'FF' for no)."
+            },
+            "ForeignExchangeReferenceIndicator": {
+                "Name": "Foreign Exchange Reference Indicator",
+                "StartPosition": 43,
+                "EndPosition": 43,
+                "Description": "Indicates the type of reference for the exchange rate (e.g., '1' for fixed)."
+            },
+            "ForeignExchangeReference": {
+                "Name": "Foreign Exchange Reference",
+                "StartPosition": 44,
+                "EndPosition": 50,
+                "Description": "Specifies the exchange rate if applicable."
+            },
+            "ISOOriginatingCurrencyCode": {
+                "Name": "ISO Originating Currency Code",
+                "StartPosition": 51,
+                "EndPosition": 53,
+                "Description": "ISO currency code of the originating currency (e.g., 'USD')."
+            },
+            "ISODestinationCurrencyCode": {
+                "Name": "ISO Destination Currency Code",
+                "StartPosition": 54,
+                "EndPosition": 56,
+                "Description": "ISO currency code of the destination currency."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'1' indicating the presence of addenda records with IAT transactions."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "MTE": {
+        "Name": "Machine Transfer Entry",
+        "TypeCode": 6,
+        "Description": "Used for ACH entries initiated through an ATM or similar device, typically for transferring funds or withdrawals.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of transaction (e.g., ATM withdrawal or transfer)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's bank account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "TerminalIDCode": {
+                "Name": "Terminal ID Code",
+                "StartPosition": 40,
+                "EndPosition": 48,
+                "Description": "Identifier for the ATM or terminal where the transaction was initiated."
+            },
+            "TransactionSerialNumber": {
+                "Name": "Transaction Serial Number",
+                "StartPosition": 49,
+                "EndPosition": 54,
+                "Description": "Unique identifier for the transaction at the terminal."
+            },
+            "TransactionDate": {
+                "Name": "Transaction Date",
+                "StartPosition": 55,
+                "EndPosition": 60,
+                "Description": "Date of the transaction in 'YYMMDD' format."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "POS": {
+        "Name": "Point-of-Sale Entry",
+        "TypeCode": 6,
+        "Description": "Used for ACH debit entries initiated at a point-of-sale (POS) terminal, typically for purchases.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of transaction (e.g., debit to consumer checking)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's bank account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "TerminalIDCode": {
+                "Name": "Terminal ID Code",
+                "StartPosition": 40,
+                "EndPosition": 48,
+                "Description": "Unique identifier for the POS terminal."
+            },
+            "TransactionSerialNumber": {
+                "Name": "Transaction Serial Number",
+                "StartPosition": 49,
+                "EndPosition": 54,
+                "Description": "Unique identifier for the transaction at the POS."
+            },
+            "TransactionDate": {
+                "Name": "Transaction Date",
+                "StartPosition": 55,
+                "EndPosition": 60,
+                "Description": "Date of the transaction in 'YYMMDD' format."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "SHR": {
+        "Name": "Shared Network Transaction",
+        "TypeCode": 6,
+        "Description": "Used for ACH debit entries within a shared network, commonly used for ATM transactions.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of transaction (e.g., debit to consumer checking)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's bank account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "TerminalIDCode": {
+                "Name": "Terminal ID Code",
+                "StartPosition": 40,
+                "EndPosition": 48,
+                "Description": "Unique identifier for the ATM or terminal where the transaction was initiated."
+            },
+            "TransactionSerialNumber": {
+                "Name": "Transaction Serial Number",
+                "StartPosition": 49,
+                "EndPosition": 54,
+                "Description": "Unique identifier for the transaction within the shared network."
+            },
+            "TransactionDate": {
+                "Name": "Transaction Date",
+                "StartPosition": 55,
+                "EndPosition": 60,
+                "Description": "Date of the transaction in 'YYMMDD' format."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "TRC": {
+        "Name": "Truncated Entry",
+        "TypeCode": 6,
+        "Description": "Used for ACH debit entries in a shared truncated check processing system.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of transaction (e.g., debit to consumer checking)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's bank account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "CheckSerialNumber": {
+                "Name": "Check Serial Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Serial number of the check being truncated."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "TRX": {
+        "Name": "Truncated Entries Exchange",
+        "TypeCode": 6,
+        "Description": "Used for exchanging truncated check entries between financial institutions.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed code '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of transaction (e.g., debit to consumer checking)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's bank account number."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "CheckSerialNumber": {
+                "Name": "Check Serial Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Serial number of the check being truncated."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda, '1' if addenda are present."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "XCK": {
+        "Name": "Destroyed Check Entry",
+        "TypeCode": 6,
+        "Description": "Used to create an ACH debit entry for checks that have been destroyed, allowing the transaction to be processed without the physical check.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of debit transaction (e.g., code '27' for debit to checking)."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the receiving DFI's routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's account number at the receiving financial institution."
+            },
+            "Amount": {
+                "Name": "Amount",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Transaction amount in cents (no decimal)."
+            },
+            "CheckSerialNumber": {
+                "Name": "Check Serial Number",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Serial number of the destroyed check."
+            },
+            "IndividualName": {
+                "Name": "Individual Name",
+                "StartPosition": 55,
+                "EndPosition": 76,
+                "Description": "Name of the individual or entity associated with the check."
+            },
+            "DiscretionaryData": {
+                "Name": "Discretionary Data",
+                "StartPosition": 77,
+                "EndPosition": 78,
+                "Description": "Optional field for use by the originator; typically left blank."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 79,
+                "EndPosition": 79,
+                "Description": "'0' if no addenda is present; '1' if an addenda is included."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 80,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator."
+            }
+        }
+    },
+    "COR": {
+        "Name": "Notification of Change",
+        "TypeCode": 6,
+        "Description": "Used to notify the originator of a correction needed in the recipient's account information, such as a new routing or account number.",
+        "Fields": {
+            "RecordTypeCode": {
+                "Name": "Record Type Code",
+                "StartPosition": 1,
+                "EndPosition": 1,
+                "Description": "Fixed value '6' indicating an Entry Detail Record."
+            },
+            "TransactionCode": {
+                "Name": "Transaction Code",
+                "StartPosition": 2,
+                "EndPosition": 3,
+                "Description": "Specifies the type of transaction; for COR, it is often '21' for notifications."
+            },
+            "ReceivingDFIIdentification": {
+                "Name": "Receiving DFI Identification",
+                "StartPosition": 4,
+                "EndPosition": 11,
+                "Description": "Routing number of the receiving financial institution."
+            },
+            "CheckDigit": {
+                "Name": "Check Digit",
+                "StartPosition": 12,
+                "EndPosition": 12,
+                "Description": "Check digit for the routing number."
+            },
+            "DFIAccountNumber": {
+                "Name": "DFI Account Number",
+                "StartPosition": 13,
+                "EndPosition": 29,
+                "Description": "Receiver's account number at the receiving financial institution."
+            },
+            "Reserved": {
+                "Name": "Reserved",
+                "StartPosition": 30,
+                "EndPosition": 39,
+                "Description": "Reserved for future use; typically left blank."
+            },
+            "IndividualName": {
+                "Name": "Individual Name",
+                "StartPosition": 40,
+                "EndPosition": 54,
+                "Description": "Name of the individual or entity associated with the change notification."
+            },
+            "Reserved2": {
+                "Name": "Reserved",
+                "StartPosition": 55,
+                "EndPosition": 79,
+                "Description": "Reserved for future use; typically left blank."
+            },
+            "AddendaRecordIndicator": {
+                "Name": "Addenda Record Indicator",
+                "StartPosition": 80,
+                "EndPosition": 80,
+                "Description": "'1' indicating the presence of an Addenda Record (required for COR)."
+            },
+            "TraceNumber": {
+                "Name": "Trace Number",
+                "StartPosition": 81,
+                "EndPosition": 94,
+                "Description": "Unique tracking number assigned by the originator for the original transaction."
+            }
+        }
+    }
+}
